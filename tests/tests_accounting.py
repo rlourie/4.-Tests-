@@ -1,5 +1,3 @@
-import pytest
-import unittest
 import builtins
 import mock
 from src import accounting
@@ -47,6 +45,6 @@ class TestFunctions:
     @patch('builtins.input', side_effect=['45678', 'passport', 'Арсений Крылов', '3'])
     def test_add_new_doc(self, mock_input):
         assert accounting.add_new_doc() == '3'
-        assert len(accounting.documents) == 4
-        assert accounting.documents[3].get("name") == 'Арсений Крылов'
+        assert len(accounting.documents) == 3
+        assert accounting.documents[2].get("name") == 'Арсений Крылов'
         assert accounting.directories.get("3") == ['45678']
